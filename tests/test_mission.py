@@ -85,4 +85,6 @@ def test_mission_scenario(randomized_input):
     print("----------------")
 
     gridded_rovers = [rover for rover in mission_controller.plateau.cells if rover is not None]
+    assert len(gridded_rovers) == len(mission_controller.rovers)
     assert set(gridded_rovers) == set(mission_controller.rovers)
+    assert all(mission_controller.plateau[rover.position] == rover for rover in mission_controller.rovers)
